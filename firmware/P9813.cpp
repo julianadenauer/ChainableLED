@@ -1,4 +1,4 @@
-#include "ChainableLED.h"
+#include "P9813.h"
 
 /*
  * Copyright (C) 2012 Paulo Marques (pjp.marques@gmail.com)
@@ -36,7 +36,7 @@ float hue2rgb(float p, float q, float t);
 
 // --------------------------------------------------------------------------------------
 
-ChainableLED::ChainableLED(byte clk_pin, byte data_pin, byte number_of_leds) :
+P9813::P9813(byte clk_pin, byte data_pin, byte number_of_leds) :
     _clk_pin(clk_pin), _data_pin(data_pin), _num_leds(number_of_leds)
 {
     pinMode(_clk_pin, OUTPUT);
@@ -48,12 +48,12 @@ ChainableLED::ChainableLED(byte clk_pin, byte data_pin, byte number_of_leds) :
         setColorRGB(i, 0, 0, 0);
 }
 
-ChainableLED::~ChainableLED()
+P9813::~P9813()
 {
     free(_led_state);
 }
 
-float ChainableLED::myconstrain(float in, float min, float max)
+float P9813::myconstrain(float in, float min, float max)
 {
    if(in > max) in = max;
    if(in < min) in = min;
@@ -62,7 +62,7 @@ float ChainableLED::myconstrain(float in, float min, float max)
 
 // --------------------------------------------------------------------------------------
 
-void ChainableLED::clk(void)
+void P9813::clk(void)
 {
     digitalWrite(_clk_pin, LOW);
     delayMicroseconds(_CLK_PULSE_DELAY);
@@ -70,7 +70,7 @@ void ChainableLED::clk(void)
     delayMicroseconds(_CLK_PULSE_DELAY);
 }
 
-void ChainableLED::sendByte(byte b)
+void P9813::sendByte(byte b)
 {
     // Send one bit at a time, starting with the MSB
     for (byte i=0; i<8; i++)
@@ -87,7 +87,7 @@ void ChainableLED::sendByte(byte b)
     }
 }
 
-void ChainableLED::sendColor(byte red, byte green, byte blue)
+void P9813::sendColor(byte red, byte green, byte blue)
 {
     // Start by sending a byte with the format "1 1 /B7 /B6 /G7 /G6 /R7 /R6"
     byte prefix = (1<<6) | (1<<7);
@@ -105,7 +105,7 @@ void ChainableLED::sendColor(byte red, byte green, byte blue)
     sendByte(red);
 }
 
-void ChainableLED::setColorRGB(byte led, byte red, byte green, byte blue)
+void P9813::setColorRGB(byte led, byte red, byte green, byte blue)
 {
     // Send data frame prefix (32x "0")
     sendByte(0x00);
@@ -135,7 +135,7 @@ void ChainableLED::setColorRGB(byte led, byte red, byte green, byte blue)
     sendByte(0x00);
 }
 
-void ChainableLED::setColorHSB(byte led, float hue, float saturation, float brightness)
+void P9813::setColorHSB(byte led, float hue, float saturation, float brightness)
 {
     float r, g, b;
 

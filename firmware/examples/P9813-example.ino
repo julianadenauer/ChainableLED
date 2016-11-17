@@ -1,7 +1,7 @@
-#include "ChainableLED.h"
+#include "P9813.h"
 
 #define NUM_LEDS  1
-ChainableLED leds(D4, D5, NUM_LEDS);
+P9813 leds(D4, D5, NUM_LEDS);
 
 // This routine runs only once upon reset
 void setup()

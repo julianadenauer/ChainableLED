@@ -29,8 +29,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
-#ifndef __ChainableLED_h__
-#define __ChainableLED_h__
+#ifndef __P9813_h__
+#define __P9813_h__
 
 //#include "Arduino.h"
 #include "application.h"
@@ -40,11 +40,11 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #define _CL_BLUE            2
 #define _CLK_PULSE_DELAY    20
 
-class ChainableLED
+class P9813
 {
 public:
-    ChainableLED(byte clk_pin, byte data_pin, byte number_of_leds);
-    ~ChainableLED();
+    P9813(byte clk_pin, byte data_pin, byte number_of_leds);
+    ~P9813();
 
     void setColorRGB(byte led, byte red, byte green, byte blue);
     void setColorHSB(byte led, float hue, float saturation, float brightness);

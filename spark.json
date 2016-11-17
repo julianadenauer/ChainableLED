@@ -1,6 +1,6 @@
 {
     "name": "P9813",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "author": "Julian Adenauer <julian@retune.de>",
     "license": "MIT",
     "description": "Library for controlling smart LEDs based on the P9813 protocol aka the ChainableLED in the Grove Starter Kit for Photon"

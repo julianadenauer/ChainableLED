@@ -1,4 +1,4 @@
-#include "P9813.h"
+#include "ChainableLED.h"
 
 /*
  * Copyright (C) 2012 Paulo Marques (pjp.marques@gmail.com)
@@ -30,8 +30,6 @@
 
 
 // --------------------------------------------------------------------------------------
-
-#include "ChainableLED.h"
 
 // Forward declaration
 float hue2rgb(float p, float q, float t);
